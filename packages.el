@@ -3,8 +3,8 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 (defvar required-packages
   '(
@@ -16,6 +16,7 @@
     jedi
     ess
     multiple-cursors
+    base16-theme
   ) "a list of packages to ensure are installed at launch.")
 
 ; method to check if all packages are installed
