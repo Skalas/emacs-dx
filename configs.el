@@ -11,3 +11,5 @@
 (require 'iso-transl)
 
 (setq tab-width 4)
+
+(global-linum-mode 1)
