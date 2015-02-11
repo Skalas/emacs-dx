@@ -11,5 +11,5 @@
 (require 'iso-transl)
 
 (setq tab-width 4)
-
+(setq inhibit-startup-message t)
 (global-linum-mode 1)
