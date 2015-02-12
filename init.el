@@ -3,3 +3,4 @@
 (load "~/.emacs.d/configs.el")
 (load "~/.emacs.d/aliases.el")
 (load "~/.emacs.d/themes.el")
+(load "~/.emacs.d/ruby.el")
