@@ -15,6 +15,11 @@
     ess
     multiple-cursors
     base16-theme
+    enh-ruby-mode
+    rinari
+    inf-ruby
+    rhtml-mode
+    projectile
   ) "a list of packages to ensure are installed at launch.")
 
 ; method to check if all packages are installed
@@ -40,3 +45,10 @@
 (require 'ess)
 (load "ess-site")
 (require 'yasnippet)
+(require 'projectile)
+(require 'rinari)
+(require 'inf-ruby)
+(require 'compile)
+(require 'enh-ruby-mode)
+(add-to-list 'load-path "~/.emacs.d/emacs-nav-49/")
+(require 'nav)
