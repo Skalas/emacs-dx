@@ -13,3 +13,10 @@
 (setq tab-width 4)
 (setq inhibit-startup-message t)
 (global-linum-mode 1)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(nav-disable-overeager-window-splitting)
+;; Optional: set up a quick key to toggle nav
+(global-set-key [f9] 'nav-toggle)
