@@ -9,4 +9,7 @@ do
     echo "$i"
     cp $i ~/.emacs.d/
 done
+cd ~/.emacs.d
+wget https://emacs-nav.googlecode.com/files/emacs-nav-49.tar.gz
+tar -zxvf emacs-nav-49.tar.gz
 
