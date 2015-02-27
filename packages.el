@@ -9,7 +9,6 @@
     magit
     yasnippet
     auto-complete
-    org
     window-jump
     jedi
     ess
@@ -51,4 +50,7 @@
 (require 'compile)
 (require 'enh-ruby-mode)
 (add-to-list 'load-path "~/.emacs.d/emacs-nav-49/")
+(add-to-list 'load-path "~/.emacs.d/paquetes/org-mode/lisp")
 (require 'nav)
+(require 'ox-reveal)
+(setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/")
