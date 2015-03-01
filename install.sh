@@ -21,5 +21,3 @@ echo '========================================================='
 echo '=====================org-mode============================'
 echo '========================================================='
 git clone https://github.com/yjwen/org-reveal.git && cd org-reveal && git checkout stable && cp ox-reveal.el ../org-mode/lisp/ && cd ..
-## instalamos reveal.js
-sudo chown -R "$USER:$USER" ~/.emacs.d
