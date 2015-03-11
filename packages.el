@@ -19,6 +19,7 @@
     inf-ruby
     rhtml-mode
     projectile
+    helm
   ) "a list of packages to ensure are installed at launch.")
 
 ; method to check if all packages are installed
@@ -37,20 +38,3 @@
   (dolist (p required-packages)
     (when (not (package-installed-p p))
       (package-install p))))
-
-(require 'ido)
-(require 'multiple-cursors)
-(require 'auto-complete)
-(require 'ess)
-(load "ess-site")
-(require 'yasnippet)
-(require 'projectile)
-(require 'rinari)
-(require 'inf-ruby)
-(require 'compile)
-(require 'enh-ruby-mode)
-(add-to-list 'load-path "~/.emacs.d/emacs-nav-49/")
-(add-to-list 'load-path "~/.emacs.d/paquetes/org-mode/lisp")
-(require 'nav)
-(require 'ox-reveal)
-(setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/")
