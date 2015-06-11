@@ -1,1 +1,1 @@
-(when ( window-system) (load-theme 'base16-ocean t))
+(when ( window-system) (load-theme 'base16-google-dark t))
