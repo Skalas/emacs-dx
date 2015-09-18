@@ -17,6 +17,8 @@
     enh-ruby-mode
     rinari
     inf-ruby
+    docker
+    dockerfile-mode
     rhtml-mode
     projectile
     helm
