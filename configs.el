@@ -13,13 +13,6 @@
 (setq tab-width 4)
 (setq inhibit-startup-message t)
 (global-linum-mode 1)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-
-;; Optional: set up a quick key to toggle nav
-(global-set-key [f9] 'nav-toggle)
 ;; Configuraciones de paquetes.
 
 (require 'ido)
@@ -32,11 +25,19 @@
 (require 'rinari)
 (require 'inf-ruby)
 (require 'compile)
+(require 'jedi)
 (require 'enh-ruby-mode)
 (add-to-list 'load-path "~/.emacs.d/emacs-nav-49/")
 (add-to-list 'load-path "~/.emacs.d/paquetes/org-mode/lisp")
 (require 'nav)
 (require 'ox-reveal)
 (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/")
-
+(require 'yasnippet)
 (require 'helm-config)
+
+(helm-mode 1)
+(jedi:install-server)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)                      ; optional
+(setq jedi:complete-on-dot t)                 ; optional
+(yas-global-mode 1)

@@ -1,5 +1,4 @@
 ;; metemos projectile (le gusta al doc)
-(projectile-global-mode)
 (add-hook 'ruby-mode-hook 'projectile-on)
 ;; Enhanced ruby mode
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
