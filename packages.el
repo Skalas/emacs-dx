@@ -19,6 +19,8 @@
     markdown-mode
     dockerfile-mode
     inf-ruby
+    docker
+    dockerfile-mode
     rhtml-mode
     projectile
     helm
