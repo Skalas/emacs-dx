@@ -16,6 +16,8 @@
     base16-theme
     enh-ruby-mode
     rinari
+    markdown-mode
+    dockerfile-mode
     inf-ruby
     rhtml-mode
     projectile
