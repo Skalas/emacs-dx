@@ -17,7 +17,6 @@
     enh-ruby-mode
     rinari
     markdown-mode
-    dockerfile-mode
     inf-ruby
     docker
     dockerfile-mode
