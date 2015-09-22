@@ -17,8 +17,8 @@ tar -zxvf emacs-nav-49.tar.gz
 mkdir paquetes
 mkdir snippets
 cd paquetes
-git clone git://orgmode.org/org-mode.git && cd org-mode && git checkout maint &&make autoloads && cd .. 
+git clone https://github.com/jwiegley/org-mode.git && cd org-mode  && make autoloads && cd .. 
 echo '========================================================='
 echo '=====================org-mode============================'
 echo '========================================================='
-git clone https://github.com/yjwen/org-reveal.git && cd org-reveal && git checkout stable && cp ox-reveal.el ../org-mode/lisp/ && cd ..
+git clone https://github.com/yjwen/org-reveal.git && cd org-reveal && cp ox-reveal.el ../org-mode/lisp/ && cd ..
