@@ -23,6 +23,8 @@
     rhtml-mode
     projectile
     helm
+    org
+    ox-reveal
   ) "a list of packages to ensure are installed at launch.")
 
 ; method to check if all packages are installed
