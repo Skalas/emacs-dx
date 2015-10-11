@@ -1,3 +1,7 @@
+(require 'projectile)
+(require 'rinari)
+(require 'inf-ruby)
+(require 'enh-ruby-mode)
 ;; metemos projectile (le gusta al doc)
 (add-hook 'ruby-mode-hook 'projectile-on)
 ;; Enhanced ruby mode
