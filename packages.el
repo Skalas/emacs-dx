@@ -3,6 +3,9 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+
 (package-initialize)
 (defvar required-packages
   '(
@@ -10,7 +13,6 @@
     yasnippet
     auto-complete
     window-jump
-    jedi
     ess
     multiple-cursors
     base16-theme
@@ -22,6 +24,7 @@
     dockerfile-mode
     rhtml-mode
     projectile
+    elpy
     helm
     org
     ox-reveal
