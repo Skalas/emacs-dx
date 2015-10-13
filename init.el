@@ -5,5 +5,6 @@
 (load "~/.emacs.d/themes.el")
 (load "~/.emacs.d/org.el")
 (load "~/.emacs.d/R.el")
+(load "~/.emacs.d/bash.el")
 ;;(load "~/.emacs.d/ruby.el")
 ;;(load "~/.emacs.d/python.el")
