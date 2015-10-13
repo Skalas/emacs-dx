@@ -1,4 +1,4 @@
-(load "essh.el")
+(load "~/.emacs.d/essh.el")
 (require 'essh)                                                    
 
 (defun essh-sh-hook ()                                             
