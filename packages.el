@@ -25,7 +25,6 @@
     rhtml-mode
     projectile
     elpy
-    helm
     org
     ox-reveal
   ) "a list of packages to ensure are installed at launch.")

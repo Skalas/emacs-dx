@@ -20,6 +20,4 @@
 (require 'auto-complete)
 (require 'nav)
 (require 'yasnippet)
-(require 'helm-config)
-(helm-mode 1)
 (yas-global-mode 1)
