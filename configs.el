@@ -10,7 +10,6 @@
 (require 'iso-transl)
 (setq tab-width 4)
 (setq inhibit-startup-message t)
-(global-linum-mode 1)
 
 ;; Configuraciones de paquetes.
 (add-to-list 'load-path "~/.emacs.d/emacs-nav-49/")
