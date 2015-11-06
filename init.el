@@ -8,4 +8,5 @@
 (load "~/.emacs.d/R.el")
 (load "~/.emacs.d/bash.el")
 (load "~/.emacs.d/python.el")
+(load "~/.emacs.d/sql.el")
 ;;(load "~/.emacs.d/ruby.el")
