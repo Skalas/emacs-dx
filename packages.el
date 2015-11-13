@@ -11,6 +11,7 @@
   '(
     magit
     yasnippet
+    csv-mode
     auto-complete
     window-jump
     ess
