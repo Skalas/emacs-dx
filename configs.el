@@ -13,6 +13,7 @@
 
 ;; Configuraciones de paquetes.
 (add-to-list 'load-path "~/.emacs.d/emacs-nav-49/")
+(setq default-directory "~/Github/")
 (require 'compile)
 (require 'ido)
 (require 'multiple-cursors)
