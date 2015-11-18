@@ -12,6 +12,7 @@
     magit
     yasnippet
     csv-mode
+    json-mode
     auto-complete
     window-jump
     ess
