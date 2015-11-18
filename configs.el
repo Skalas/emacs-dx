@@ -20,4 +20,8 @@
 (require 'auto-complete)
 (require 'nav)
 (require 'yasnippet)
+;; para que los paréntesis se prendan 
+(require 'paren)
+(show-paren-mode t)
+
 (yas-global-mode 1)
