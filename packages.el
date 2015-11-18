@@ -15,6 +15,7 @@
     json-mode
     auto-complete
     window-jump
+    python-mode
     ess
     multiple-cursors
     base16-theme
@@ -26,7 +27,6 @@
     dockerfile-mode
     rhtml-mode
     projectile
-    elpy
     org
     ox-reveal
     sql-indent
