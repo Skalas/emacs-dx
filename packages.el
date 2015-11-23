@@ -13,6 +13,7 @@
     yasnippet
     csv-mode
     json-mode
+    auctex
     auto-complete
     window-jump
     python-mode
