@@ -18,6 +18,7 @@
     window-jump
     python-mode
     ess
+    exec-path-from-shell
     multiple-cursors
     base16-theme
     enh-ruby-mode
