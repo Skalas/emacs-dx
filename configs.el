@@ -25,3 +25,11 @@
 (show-paren-mode t)
 
 (yas-global-mode 1)
+(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))
+(global-set-key (kbd "M-3") '(lambda () (interactive) (insert "#")))
+(global-set-key (kbd "M-ñ") '(lambda () (interactive) (insert "~")))
+(global-set-key (kbd "M-º") '(lambda () (interactive) (insert "\\")))
+(global-set-key (kbd "M-2") '(lambda () (interactive) (insert "@")))
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
