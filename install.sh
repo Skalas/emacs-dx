@@ -11,5 +11,5 @@ do
 done
 cd ~/.emacs.d
 ## instalamos el nav-bar
-wget https://emacs-nav.googlecode.com/files/emacs-nav-49.tar.gz
+wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/emacs-nav/emacs-nav-49.tar.gz
 tar -zxvf emacs-nav-49.tar.gz
