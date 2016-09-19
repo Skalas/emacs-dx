@@ -8,7 +8,7 @@
 	   (emacs-lisp . t)
 	   (R . t)
 	   (python . t)
-	   (bash . t)
+	   (shell . t)
 	   ))
    )
  '(org-confirm-babel-evaluate nil))
