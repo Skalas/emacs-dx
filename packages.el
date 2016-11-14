@@ -24,6 +24,7 @@
     rinari
     markdown-mode
     inf-ruby
+    polymode
     docker
     dockerfile-mode
     rhtml-mode
