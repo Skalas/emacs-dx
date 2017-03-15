@@ -10,7 +10,6 @@
 (defvar required-packages
   '(
     ein
-    elpy
     flycheck
     py-autopep8
     magit
