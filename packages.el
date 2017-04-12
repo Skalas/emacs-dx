@@ -9,21 +9,28 @@
 (package-initialize)
 (defvar required-packages
   '(
+    ein
+    elpy
+    flycheck
+    py-autopep8
     magit
+    pyenv-mode-auto
+    pyenv-mode
     yasnippet
     csv-mode
     json-mode
     auctex
     auto-complete
     window-jump
-    python-mode
+;;    python-mode
     ess
     multiple-cursors
     base16-theme
-    enh-ruby-mode
-    rinari
+;;    enh-ruby-mode
+;;    rinari
     markdown-mode
-    inf-ruby
+;;    inf-ruby
+    polymode
     docker
     dockerfile-mode
     rhtml-mode
