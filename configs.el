@@ -25,7 +25,7 @@
 (show-paren-mode t)
 
 (yas-global-mode 1)
-(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))
+(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin:/usr/local/bin/"))
 (global-set-key (kbd "M-3") '(lambda () (interactive) (insert "#")))
 (global-set-key (kbd "M-ñ") '(lambda () (interactive) (insert "~")))
 (global-set-key (kbd "M-º") '(lambda () (interactive) (insert "\\")))
@@ -35,3 +35,4 @@
 (prefer-coding-system 'utf-8)
 (auto-complete-mode t)
 (global-auto-complete-mode t)
+(setq exec-path (cons "/usr/local/bin" exec-path))
