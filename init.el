@@ -17,3 +17,5 @@
 (load "~/.emacs.d/python.el")
 (load "~/.emacs.d/sql.el")
 ;;(load "~/.emacs.d/ruby.el")
+(set-face-attribute 'default nil
+                :family "Source Code Pro" :height 145 :weight 'normal)
