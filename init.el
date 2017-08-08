@@ -18,4 +18,4 @@
 (load "~/.emacs.d/sql.el")
 ;;(load "~/.emacs.d/ruby.el")
 (set-face-attribute 'default nil
-                :family "Source Code Pro" :height 145 :weight 'normal)
+                :family "Source Code Pro" :height 120 :weight 'normal)

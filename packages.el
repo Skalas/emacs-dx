@@ -9,6 +9,8 @@
 (package-initialize)
 (defvar required-packages
   '(
+    f
+    s
     ein
     elpy
     flycheck
