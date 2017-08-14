@@ -39,3 +39,6 @@
 (auto-complete-mode t)
 (global-auto-complete-mode t)
 (setq exec-path (cons "/usr/local/bin" exec-path))
+
+
+(exec-path-from-shell-copy-env "HOME")
