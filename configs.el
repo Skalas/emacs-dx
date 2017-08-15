@@ -25,6 +25,17 @@
 (show-paren-mode t)
 
 (yas-global-mode 1)
+(if (eq system-type 'darwin)
+    (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin:/usr/local/bin/:$HOME/.pyenv/shims"))
+  (global-set-key (kbd "M-3") '(lambda () (interactive) (insert "#")))
+  (global-set-key (kbd "M-ñ") '(lambda () (interactive) (insert "~")))
+  (global-set-key (kbd "M-º") '(lambda () (interactive) (insert "\\")))
+  (global-set-key (kbd "M-2") '(lambda () (interactive) (insert "@")))
+  (global-set-key (kbd "M-1") '(lambda () (interactive) (insert "|")))
+  (global-set-key (kbd "M-ç") '(lambda () (interactive) (insert "}")))
+  (global-set-key (kbd "M-+") '(lambda () (interactive) (insert "]")))
+  )
+
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
