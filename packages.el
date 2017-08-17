@@ -1,10 +1,36 @@
 ; packages.el
-(require 'cl)
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
+
+
+(require 'cl)
 (add-to-list 'package-archives
              '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+
+(use-package auctex
+  :defer t
+  :ensure t)
+
+(use-package avy
+  :ensure t
+  :commands avy-goto-word-1 avy-goto-char-1 avy-goto-line avy-goto-char-timer
+  :bind (("s-." . avy-goto-word-or-subword-1)
+         ("s-," . avy-goto-char)
+         ("C-l"     . avy-goto-word-1))
+  )
 
 (package-initialize)
 (defvar required-packages
@@ -14,22 +40,16 @@
     ein
     elpy
     flycheck
-    py-autopep8
     magit
-    pyenv-mode
-    pyenv-mode-auto
     yasnippet
     csv-mode
     json-mode
-    auctex
     auto-complete
     window-jump
-    ess
     multiple-cursors
     exec-path-from-shell
     base16-theme
     markdown-mode
-    polymode
     docker
     dockerfile-mode
     rhtml-mode

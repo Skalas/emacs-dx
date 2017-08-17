@@ -17,6 +17,7 @@
 (load "~/.emacs.d/sql.el")
 (load "~/.emacs.d/aliases.el")
 ;;(load "~/.emacs.d/ruby.el")
+(load "~/.emacs.d/pretty.el")
 (set-face-attribute 'default nil
-                :family "Source Code Pro" :height 145 :weight 'normal)
-(load "~/.emacs.d/env_vars.el")
+                :family "Source Code Pro" :height 120 :weight 'normal)
+;;(load "~/.emacs.d/env_vars.el")
