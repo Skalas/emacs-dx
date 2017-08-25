@@ -46,12 +46,8 @@
     json-mode
     auto-complete
     window-jump
-    multiple-cursors
     exec-path-from-shell
     base16-theme
-    markdown-mode
-    docker
-    dockerfile-mode
     rhtml-mode
     projectile
     org

@@ -23,3 +23,4 @@
 
 
 
+(setq python-shell-prompt-detect-failure-warning nil)
