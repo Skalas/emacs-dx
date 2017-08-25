@@ -136,7 +136,7 @@
 (use-package counsel-projectile
   :ensure t
   :after counsel
-  :conexfig
+  :config
   (counsel-projectile-on)
   )
 
