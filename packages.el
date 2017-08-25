@@ -45,10 +45,8 @@
     csv-mode
     json-mode
     auto-complete
-    window-jump
     exec-path-from-shell
     base16-theme
-    rhtml-mode
     projectile
     org
     ox-reveal
