@@ -1,14 +1,13 @@
 ; packages.el
 (require 'package)
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+(setq use-package-always-ensure t)
+
 
 (eval-when-compile
   (require 'use-package))
@@ -32,6 +31,29 @@
          ("C-l"     . avy-goto-word-1))
   )
 
+
+(use-package magit-gitflow
+  :ensure t
+  :after magit
+  :disabled
+  :init
+  (progn
+    (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)  ;; Keybing: C-f en la ventana de magit
+    ))
+
+(use-package docker :ensure t)
+(use-package docker-tramp :ensure t)
+(use-package dockerfile-mode :ensure t)
+
+
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+  
 (package-initialize)
 (defvar required-packages
   '(
@@ -40,18 +62,13 @@
     ein
     elpy
     flycheck
-    magit
     yasnippet
     csv-mode
     json-mode
     auto-complete
     window-jump
-    multiple-cursors
     exec-path-from-shell
     base16-theme
-    markdown-mode
-    docker
-    dockerfile-mode
     rhtml-mode
     projectile
     org
