@@ -10,7 +10,8 @@
     (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
     (add-to-list 'exec-path "$HOME//.pyenv/shims/")
     (when (fboundp 'flycheck-mode)
-      (setq elpy-modules (delete 'elpy-module-flymake elpy-modules)))))
+      (setq elpy-modules (delete 'elpy-module-flymake elpy-modules)))
+    ))
 
 (use-package pyenv-mode  :ensure t)
 (use-package pyenv-mode-auto :ensure t )
@@ -23,3 +24,4 @@
 
 
 
+(setq python-shell-prompt-detect-failure-warning nil)
