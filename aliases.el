@@ -22,7 +22,12 @@
 
 ;; para comentar regiones en pocas lineas
 (global-set-key "\C-x\C-b" 'ibuffer)
-(global-set-key "\C-xg" 'magit-status)
+(use-package magit
+  :ensure t
+  :bind
+  ( "\C-xg" . magit-status)
+  )
+;;(global-set-key "\C-xg" 'magit-status)
 
 ;; para aumento y decremento de zoom
 (define-key global-map (kbd "C-+") 'text-scale-increase)

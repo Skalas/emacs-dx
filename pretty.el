@@ -3,6 +3,7 @@
   :ensure t    
   :config
   (use-package all-the-icons-dired
+    :ensure t
     :config
     (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
     )
@@ -59,3 +60,11 @@
            ("Any" .      #x2754)
            ("Union" .    #x22c3)))))
 (global-prettify-symbols-mode t)
+
+(setq default-frame-alist '((font . "Source Code Pro-11")))
+
+(use-package base16-theme
+  :ensure t
+  :init 
+  (load-theme 'base16-ocean t)
+  )

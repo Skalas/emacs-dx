@@ -1,6 +1,7 @@
-(add-to-list 'load-path "~/.emacs.d/paquetes/org-mode/lisp")
-
-(require 'ox-reveal)
+(add-to-list 'load-path "~/.emacs.d/org-mode/lisp")
+(use-package cl)
+(use-package ox-reveal
+	:ensure t)
 (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/")
 (custom-set-variables
  '(org-babel-load-languages

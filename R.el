@@ -3,14 +3,22 @@
   :init
   (load "ess-site"))
 
-(use-package poly-markdown
+(use-package polymode
   :ensure t
+  :defer t)
+
+(use-package poly-markdown
+  :ensure polymode
+  :defer t
+  )
+(use-package poly-markdown
+  :ensure polymode
   :init
   (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
   )
 
 (use-package poly-markdown
-  :ensure t
+  :ensure polymode
   :init
   (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
   (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))

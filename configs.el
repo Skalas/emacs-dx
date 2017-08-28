@@ -11,15 +11,16 @@
 ;; Configuraciones de paquetes.
 (add-to-list 'load-path "~/.emacs.d/emacs-nav-49/")
 (setq default-directory "~/github/")
-(require 'compile)
-(require 'auto-complete)
-(require 'nav)
-(require 'yasnippet)
-;; para que los paréntesis se prendan 
-(require 'paren)
-(show-paren-mode t)
+(use-package compile
+  :ensure t)
+(use-package nav)
+;; para que los paréntesis se prendan
+(use-package paren
+  :ensure t
+  :config
+  (show-paren-mode t))
 
-(yas-global-mode 1)
+
 
 (if (eq system-type 'darwin)
     (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin:/usr/local/bin/:$HOME/.pyenv/shims"))
@@ -38,10 +39,7 @@
 
 (auto-complete-mode t)
 (global-auto-complete-mode t)
-(setq exec-path (cons "/usr/local/bin" exec-path))
 
-
-(exec-path-from-shell-copy-env "HOME")
 
 ;; it looks like counsel is a requirement for swiper
 (use-package counsel
@@ -50,7 +48,7 @@
 
 (use-package swiper
   :init (ivy-mode 1)
-  :ensure try
+  :ensure t
   :bind (
          ("C-s" . swiper)
          ("C-r" . swiper)
@@ -163,3 +161,22 @@
 (use-package docker :ensure t)
 (use-package docker-tramp :ensure t)
 (use-package dockerfile-mode :ensure t)
+
+(use-package csv-nav
+  :ensure t
+  )
+
+(use-package csv-mode
+  :ensure t
+  :mode "\\.[PpTtCc][Ss][Vv]\\'"
+  
+  :config
+  (progn
+    (setq csv-separators '("," ";" "|" " " "\t"))
+    )
+  )
+
+(use-package json-mode
+  :ensure t)
+
+
