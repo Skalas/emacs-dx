@@ -22,7 +22,10 @@
 
 
 
-(if (eq system-type 'darwin)
+
+(cond
+ ((string-equal system-type "darwin") ; Mac OS X
+  (progn
     (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin:/usr/local/bin/:$HOME/.pyenv/shims"))
   (global-set-key (kbd "M-3") '(lambda () (interactive) (insert "#")))
   (global-set-key (kbd "M-ñ") '(lambda () (interactive) (insert "~")))
@@ -34,8 +37,9 @@
   (set-terminal-coding-system 'utf-8)
   (set-keyboard-coding-system 'utf-8)
   (prefer-coding-system 'utf-8)
-  )
-
+  (message "Mac OS X")
+  ))
+ )
 
 (auto-complete-mode t)
 (global-auto-complete-mode t)

@@ -9,6 +9,8 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+(setq use-package-always-ensure t)
+
 
 ;; ; packages.el
 ;; (require 'package)
@@ -71,6 +73,30 @@
 (use-package exec-path-from-shell
   :ensure t
   )
+
+(use-package magit-gitflow
+  :ensure t
+  :after magit
+  :disabled
+  :init
+  (progn
+    (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)  ;; Keybing: C-f en la ventana de magit
+    ))
+
+(use-package docker :ensure t)
+(use-package docker-tramp :ensure t)
+(use-package dockerfile-mode :ensure t)
+
+
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+  
+
 
 
 (setq exec-path (cons "/usr/local/bin" exec-path))
