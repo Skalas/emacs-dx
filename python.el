@@ -25,3 +25,4 @@
 
 
 (setq python-shell-prompt-detect-failure-warning nil)
+(setq python-shell-completion-native-enable nil)
