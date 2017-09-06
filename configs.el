@@ -183,4 +183,10 @@
 (use-package json-mode
   :ensure t)
 
-
+(use-package nyan-mode
+  :if window-system
+  :ensure t
+  :config
+  (nyan-mode)
+  (nyan-start-animation)
+  )
