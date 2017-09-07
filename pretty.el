@@ -1,6 +1,14 @@
 ;; all the icons in emacs!
+
+(if (package-installed-p 'all-the-icons)
+  (setq font-install nil)
+  (setq font-install t)
+  )
+
 (use-package all-the-icons
-  :ensure t    
+  :ensure t
+  :init
+  
   :config
   (use-package all-the-icons-dired
     :ensure t
@@ -9,6 +17,10 @@
     )
   )
 
+(if font-install
+    (all-the-icons-install-fonts t)
+  nil
+  )
 
 (use-package pretty-mode
   :ensure t
