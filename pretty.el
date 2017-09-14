@@ -68,3 +68,8 @@
   :init 
   (load-theme 'base16-ocean t)
   )
+
+(use-package dashboard
+  :config
+  (dashboard-setup-startup-hook))
+
