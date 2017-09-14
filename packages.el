@@ -38,9 +38,7 @@
 ;; (add-to-list 'package-archives
 ;;              '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 
-(use-package auctex
-  :defer t
-  :ensure t)
+(use-package tex :ensure auctex)
 
 (use-package avy
   :ensure t
@@ -96,8 +94,6 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
   
-
-
 
 (setq exec-path (cons "/usr/local/bin" exec-path))
    (exec-path-from-shell-copy-env "HOME")
