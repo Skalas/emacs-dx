@@ -1,5 +1,12 @@
 (use-package projectile
-  :ensure t)
+  :ensure t
+  :config
+  (projectile-mode)
+  :bind(
+	("C-c C-p" . projectile-keymap-prefix)
+	)
+
+  )
 
 (use-package org-projectile
   :bind (("C-c n p" . org-projectile-project-todo-completing-read)
