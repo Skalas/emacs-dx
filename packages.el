@@ -38,7 +38,9 @@
 ;; (add-to-list 'package-archives
 ;;              '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 
-(use-package tex :ensure auctex)
+(use-package auctex
+  :defer t
+  :ensure t)
 
 (use-package avy
   :ensure t
@@ -68,9 +70,6 @@
   :ensure t
   :config
   (ac-config-default))
-(use-package exec-path-from-shell
-  :ensure t
-  )
 
 (use-package magit-gitflow
   :ensure t
@@ -95,5 +94,5 @@
   :init (setq markdown-command "multimarkdown"))
   
 
-(setq exec-path (cons "/usr/local/bin" exec-path))
-   (exec-path-from-shell-copy-env "HOME")
+
+

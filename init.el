@@ -19,5 +19,4 @@
 ;;(load "~/.emacs.d/ruby.el")
 (load "~/.emacs.d/pretty.el")
 (load "~/.emacs.d/org.el")
-
-;;(load "~/.emacs.d/env_vars.el")
+(load "~/.emacs.d/env_vars.el")

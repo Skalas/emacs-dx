@@ -20,9 +20,6 @@
   :config
   (show-paren-mode t))
 
-
-
-
 (cond
  ((string-equal system-type "darwin") ; Mac OS X
   (progn
@@ -43,7 +40,6 @@
 
 (auto-complete-mode t)
 (global-auto-complete-mode t)
-
 
 ;; it looks like counsel is a requirement for swiper
 (use-package counsel
@@ -143,15 +139,6 @@
   )
 
 
-;; Edición de múltiples líneas
-(use-package multiple-cursors
-  :diminish multiple-cursors-mode
-  :defer t
-  :init
-  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-  )
 
 (use-package markdown-mode
   :ensure t
@@ -160,7 +147,6 @@
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
-
 
 (use-package docker :ensure t)
 (use-package docker-tramp :ensure t)
@@ -189,4 +175,25 @@
   :config
   (nyan-mode)
   (nyan-start-animation)
+  )
+
+
+(use-package git-gutter+
+  :diminish
+  :defer t
+  :config
+  (global-git-gutter+-mode)
+  )
+
+(dolist (key '("\C-d" "\C-\M-b"))
+  (global-unset-key key))
+
+;; Edición de múltiples líneas
+(use-package multiple-cursors
+  :diminish multiple-cursors-mode
+  :defer t
+  :init
+  (global-set-key (kbd "C-d") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-M-d") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
   )
