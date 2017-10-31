@@ -1,13 +1,15 @@
 (defalias 'qrr 'query-replace-regexp)
 
 
-(use-package window-jump :ensure t)
+(use-package window-jump
+  :ensure t)
+
 (defvar my-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "<M-up>") 'window-jump-up) 
-    (define-key map (kbd "<M-right>") 'window-jump-right)
-    (define-key map (kbd "<M-down>") 'window-jump-down)
-    (define-key map (kbd "<M-left>") 'window-jump-left)
+    (define-key map (kbd "<C-s-up>") 'window-jump-up) 
+    (define-key map (kbd "<C-s-right>") 'window-jump-right)
+    (define-key map (kbd "<C-s-down>") 'window-jump-down)
+    (define-key map (kbd "<C-s-left>") 'window-jump-left)
     map)
   "my-keys-minor-mode keymap.")
 (define-minor-mode my-keys-minor-mode
@@ -20,14 +22,14 @@
 (add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
 
 
-;; para comentar regiones en pocas lineas
+
 (global-set-key "\C-x\C-b" 'ibuffer)
+
 (use-package magit
   :ensure t
   :bind
   ( "\C-xg" . magit-status)
   )
-;;(global-set-key "\C-xg" 'magit-status)
 
 ;; para aumento y decremento de zoom
 (define-key global-map (kbd "C-+") 'text-scale-increase)

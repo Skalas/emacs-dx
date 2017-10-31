@@ -1,3 +1,4 @@
+
 ;; all the icons in emacs!
 
 (if (package-installed-p 'all-the-icons)
@@ -74,6 +75,18 @@
 (global-prettify-symbols-mode t)
 
 (setq default-frame-alist '((font . "Source Code Pro-11")))
+
+;; (use-package spaceline-all-the-icons 
+;;   :after spaceline
+;;   :config (spaceline-all-the-icons-theme))
+(use-package spaceline-config
+  :ensure spaceline
+)
+
+
+(use-package spaceline-all-the-icons 
+  :after spaceline
+  :config (spaceline-all-the-icons-theme))
 
 (use-package base16-theme
   :ensure t
