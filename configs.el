@@ -131,13 +131,6 @@
   :ensure t
   )
 
-(use-package counsel-projectile
-  :ensure t
-  :after counsel
-  :config
-  (counsel-projectile-on)
-  )
-
 
 
 (use-package markdown-mode
@@ -151,10 +144,6 @@
 (use-package docker :ensure t)
 (use-package docker-tramp :ensure t)
 (use-package dockerfile-mode :ensure t)
-
-(use-package csv-nav
-  :ensure t
-  )
 
 (use-package csv-mode
   :ensure t

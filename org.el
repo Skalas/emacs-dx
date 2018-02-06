@@ -1,3 +1,7 @@
+(if (package-installed-p 'org)
+  (setq org-install nil)
+  (setq org-install t)
+  )
 
 
 (use-package htmlize
@@ -47,3 +51,15 @@
 ;; (sequence "|" "✘ CANCELED(c)")))
 
 (setq org-log-done 'time)
+
+
+
+(if org-install
+    (byte-recompile-file
+     (expand-file-name "ob-R.el"
+		       (file-name-directory (locate-library "org")))
+     t)
+  nil
+  )
+
+

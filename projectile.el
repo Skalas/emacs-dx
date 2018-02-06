@@ -19,3 +19,11 @@
     (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
     (push (org-projectile-project-todo-entry) org-capture-templates))
   :ensure t)
+
+
+(use-package counsel-projectile
+  :ensure t
+  :after counsel
+  :config
+  (counsel-projectile-on)
+  )
