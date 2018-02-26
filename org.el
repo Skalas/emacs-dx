@@ -52,9 +52,12 @@
 
 (setq org-log-done 'time)
 
+(if (boundp org-install)
+    (message "I installed org")
+  nil
+  )
 
-
-(if org-install
+(if (boundp org-install)
     (byte-recompile-file
      (expand-file-name "ob-R.el"
 		       (file-name-directory (locate-library "org")))
