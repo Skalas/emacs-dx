@@ -197,3 +197,8 @@
   (global-set-key (kbd "C-M-d") 'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
   )
+
+(use-package git-gutter
+  :init
+  (global-git-gutter-mode +1)
+  )
