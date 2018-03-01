@@ -1,4 +1,3 @@
-
 ;; all the icons in emacs!
 
 (if (package-installed-p 'all-the-icons)
@@ -76,23 +75,34 @@
 
 (setq default-frame-alist '((font . "Source Code Pro-11")))
 
+
+
+
+(use-package doom-themes
+  :ensure t
+  :init
+  (setq doom-themes-enable-bold t
+	doom-themes-enable-italic t)
+  (load-theme 'doom-one t)
+  (doom-themes-neotree-config)
+  (doom-themes-org-config)
+  (doom-themes-visual-bell-config)
+
+  )
+;; (use-package spaceline-config
+;;   :ensure spaceline
+;; )
+;; 
+
 ;; (use-package spaceline-all-the-icons 
 ;;   :after spaceline
 ;;   :config (spaceline-all-the-icons-theme))
-(use-package spaceline-config
-  :ensure spaceline
-)
 
-
-(use-package spaceline-all-the-icons 
-  :after spaceline
-  :config (spaceline-all-the-icons-theme))
-
-(use-package base16-theme
-  :ensure t
-  :init 
-  (load-theme 'base16-ocean t)
-  )
+;; (use-package base16-theme
+;;   :ensure t
+;;   :init 
+;;   (load-theme 'base16-ocean t)
+;;   )
 
 (use-package dashboard
   :config
