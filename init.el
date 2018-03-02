@@ -6,7 +6,7 @@
 (load "~/.emacs.d/python.el")
 (load "~/.emacs.d/sql.el")
 (load "~/.emacs.d/aliases.el")
-;;(load "~/.emacs.d/projectile.el")
+(load "~/.emacs.d/projectile.el")
 ;;(load "~/.emacs.d/ruby.el")
 (load "~/.emacs.d/pretty.el")
 (load "~/.emacs.d/org.el")

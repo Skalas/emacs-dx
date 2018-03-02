@@ -20,10 +20,6 @@
     (push (org-projectile-project-todo-entry) org-capture-templates))
   :ensure t)
 
-
 (use-package counsel-projectile
   :ensure t
-  :after counsel
-  :config
-  (counsel-projectile-on)
-  )
+  :after projectile)
