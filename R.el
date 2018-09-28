@@ -8,9 +8,9 @@
   :defer t)
 
 (use-package poly-markdown
-  :ensure polymode
-  :defer t
+  :ensure t
   )
+
 (use-package poly-markdown
   :ensure polymode
   :init

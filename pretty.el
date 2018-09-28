@@ -22,20 +22,20 @@
   nil
   )
 
-(use-package pretty-mode
-  :ensure t
-  :config
-  (global-pretty-mode t)
-  (pretty-deactivate-groups
-   '(:equality :ordering :ordering-double :ordering-triple
-               :arrows :arrows-twoheaded :punctuation
-               :logic :sets))
-  (pretty-activate-groups
-   '(:sub-and-superscripts :greek :arithmetic-nary :parentheses
-                           :types :arrows-tails  :arrows-tails-double
-                           :logic :sets :equality :ordering
-                           :arrows :arrows-twoheaded ))
-  )
+;; (use-package pretty-mode
+;;   :ensure t
+;;   :config
+;;   (global-pretty-mode t)
+;;   (pretty-deactivate-groups
+;;    '(:equality :ordering :ordering-double :ordering-triple
+;;                :arrows :arrows-twoheaded :punctuation
+;;                :logic :sets :ForwardPipe ))
+;;   (pretty-activate-groups
+;;    '(:sub-and-superscripts :greek :arithmetic-nary :parentheses
+;;                            :types :arrows-tails  :arrows-tails-double
+;;                            :logic :sets :equality :ordering
+;;                            :arrows :arrows-twoheaded ))
+;;   )
 
 (add-hook
  'prog-mode-hook
@@ -70,7 +70,12 @@
            ("Set" .      #x2126)
            ("Iterable" . #x1d50a)
            ("Any" .      #x2754)
-           ("Union" .    #x22c3)))))
+           ("Union" .    #x22c3)
+	   ("%>%" .    #x25ba )
+	   ("<-" .    #x2190 )
+	   ("%<>%" . #x2666)
+	   ))))
+
 (global-prettify-symbols-mode t)
 
 (setq default-frame-alist '((font . "Source Code Pro-11")))

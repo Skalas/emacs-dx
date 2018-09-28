@@ -9,6 +9,7 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
 (setq use-package-always-ensure t)
 
 
@@ -16,7 +17,8 @@
   :ensure t)
 (use-package bind-key
   :ensure t)
-
+(load "~/.emacs.d/font-lock+.el")
+(require 'font-lock+)
 
 (use-package cl
   :ensure t)
@@ -41,14 +43,17 @@
   :ensure t)
 (use-package ein
   :ensure t)
+
 (use-package yasnippet
   :ensure t
   :config
   (yas-global-mode 1))
+
 (use-package flycheck
   :ensure t
   :config
   (global-flycheck-mode))
+
 (use-package auto-complete
   :ensure t
   :config
