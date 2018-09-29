@@ -4,14 +4,30 @@
 (use-package window-jump
   :ensure t)
 
+
 (defvar my-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "<C-s-up>") 'window-jump-up) 
-    (define-key map (kbd "<C-s-right>") 'window-jump-right)
-    (define-key map (kbd "<C-s-down>") 'window-jump-down)
-    (define-key map (kbd "<C-s-left>") 'window-jump-left)
+    (define-key map (kbd "<M-up>") 'window-jump-up) 
+    (define-key map (kbd "<M-right>") 'window-jump-right)
+    (define-key map (kbd "<M-down>") 'window-jump-down)
+    (define-key map (kbd "<M-left>") 'window-jump-left)
     map)
   "my-keys-minor-mode keymap.")
+
+(cond
+ ((string-equal system-type "darwin") ; Mac OS X
+  (progn
+    (defvar my-keys-minor-mode-map
+      (let ((map (make-sparse-keymap)))
+	(define-key map (kbd "<C-s-up>") 'window-jump-up) 
+	(define-key map (kbd "<C-s-right>") 'window-jump-right)
+	(define-key map (kbd "<C-s-down>") 'window-jump-down)
+	(define-key map (kbd "<C-s-left>") 'window-jump-left)
+	map)
+      "my-keys-minor-mode keymap.")
+    )))
+
+
 (define-minor-mode my-keys-minor-mode
   "A minor mode so that my key settings override annoying major modes."
   :init-value t
