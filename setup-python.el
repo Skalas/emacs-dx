@@ -20,6 +20,6 @@
   (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
 (setenv "WORKON_HOME" "~/src/anaconda3/envs")
-
+(python-shell-interpreter "python3")
 (provide 'setup-python)
 ;;; setup-python.el ends here
