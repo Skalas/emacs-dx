@@ -39,7 +39,7 @@
   )
 
 
-(setq org-agenda-files '("~/Dropbox/org/"))
+;;(setq org-agenda-files '("~/Dropbox/org/"))
 
 (use-package org-bullets
   :ensure t
