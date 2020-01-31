@@ -8,7 +8,9 @@
   :config
   (elpy-enable)
   (pyvenv-activate "~/src/anaconda3")
-  (elpy-rpc-python-command "python3")
+  (setq python-shell-interpreter "python3"
+      python-shell-interpreter-args "-i"
+      elpy-rpc-python-command "python3")
   (delete `elpy-module-django elpy-modules)
   (delete `elpy-module-highlight-indentation elpy-modules))
 
@@ -20,6 +22,7 @@
   (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
 (setenv "WORKON_HOME" "~/src/anaconda3/envs")
-(python-shell-interpreter "python3")
+
+
 (provide 'setup-python)
 ;;; setup-python.el ends here
