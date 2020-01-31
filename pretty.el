@@ -22,20 +22,20 @@
   nil
   )
 
-;; (use-package pretty-mode
-;;   :ensure t
-;;   :config
-;;   (global-pretty-mode t)
-;;   (pretty-deactivate-groups
-;;    '(:equality :ordering :ordering-double :ordering-triple
-;;                :arrows :arrows-twoheaded :punctuation
-;;                :logic :sets :ForwardPipe ))
-;;   (pretty-activate-groups
-;;    '(:sub-and-superscripts :greek :arithmetic-nary :parentheses
-;;                            :types :arrows-tails  :arrows-tails-double
-;;                            :logic :sets :equality :ordering
-;;                            :arrows :arrows-twoheaded ))
-;;   )
+(use-package pretty-mode
+  :ensure t
+  :config
+  (global-pretty-mode t)
+  (pretty-deactivate-groups
+   '(:equality :ordering :ordering-double :ordering-triple
+               :arrows :arrows-twoheaded :punctuation
+               :logic :sets :ForwardPipe ))
+  (pretty-activate-groups
+   '(:sub-and-superscripts :greek :arithmetic-nary :parentheses
+                           :types :arrows-tails  :arrows-tails-double
+                           :logic :sets :equality :ordering
+                           :arrows :arrows-twoheaded ))
+  )
 
 (add-hook
  'prog-mode-hook
@@ -80,34 +80,11 @@
 
 (setq default-frame-alist '((font . "Source Code Pro-11")))
 
-
-
-
-(use-package doom-themes
+(use-package material-theme
   :ensure t
   :init
-  (setq doom-themes-enable-bold t
-	doom-themes-enable-italic t)
-  (load-theme 'doom-one t)
-  (doom-themes-neotree-config)
-  (doom-themes-org-config)
-  (doom-themes-visual-bell-config)
-
+  (load-theme 'material t)
   )
-;; (use-package spaceline-config
-;;   :ensure spaceline
-;; )
-;; 
-
-;; (use-package spaceline-all-the-icons 
-;;   :after spaceline
-;;   :config (spaceline-all-the-icons-theme))
-
-;; (use-package base16-theme
-;;   :ensure t
-;;   :init 
-;;   (load-theme 'base16-ocean t)
-;;   )
 
 (use-package dashboard
   :config
