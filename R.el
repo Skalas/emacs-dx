@@ -1,5 +1,10 @@
 (use-package ess
   :ensure t
+  :bind
+  (:map ess-mode-map
+        (";" . ess-insert-assign))
+  (:map inferior-ess-mode-map
+        (";" . ess-insert-assign))
   :init
   (load "ess-site"))
 
