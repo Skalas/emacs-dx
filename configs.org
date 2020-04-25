@@ -33,6 +33,10 @@
   :ensure t
   :config
   (show-paren-mode t))
+(use-package auto-complete
+  :ensure t
+  :config
+  (ac-config-default))
 (auto-complete-mode t)
 (global-auto-complete-mode t)
 ;; para aumento y decremento de zoom
@@ -159,10 +163,6 @@ Basics for emacs.
   :ensure t
   :config
   (global-flycheck-mode))
-(use-package auto-complete
-  :ensure t
-  :config
-  (ac-config-default))
 (use-package auto-compile
   :config (auto-compile-on-load-mode))
 (setq load-prefer-newer t)
