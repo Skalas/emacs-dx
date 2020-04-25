@@ -5,3 +5,4 @@ do
     echo "$i"
     cp $i ~/.emacs.d/
 done
+cp configs.org ~/.emacs.d/
