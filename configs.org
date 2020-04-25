@@ -1,0 +1,487 @@
+
+* Support packages
+** Use-package
+   Use package ayuda al manejo de paqueterías en emacs. 
+#+BEGIN_SRC emacs-lisp
+(require 'package)
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+;; Bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(setq use-package-always-ensure t)
+#+END_SRC
+** Interface
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message t)
+(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(require 'iso-transl)
+;; Root dir.
+(setq default-directory "~/github/")
+(electric-pair-mode 1)
+(setq tab-width 4)
+(defalias 'qrr 'query-replace-regexp)
+;; Configuraciones de paquetes.
+(setq default-directory "~/github/")
+;; para que los paréntesis se prendan
+(use-package paren
+  :ensure t
+  :config
+  (show-paren-mode t))
+(auto-complete-mode t)
+(global-auto-complete-mode t)
+;; para aumento y decremento de zoom
+(define-key global-map (kbd "C-+") 'text-scale-increase)
+(define-key global-map (kbd "C--") 'text-scale-decrease)
+(global-set-key "\C-x\C-b" 'ibuffer)
+(define-minor-mode my-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  :init-value t
+  :lighter " my-keys")
+(my-keys-minor-mode 1)
+(defun my-minibuffer-setup-hook ()
+  (my-keys-minor-mode 0))
+(add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
+
+#+END_SRC 
+** miscelaneous
+Basics for emacs. 
+#+BEGIN_SRC emacs-lisp
+(use-package f
+  :ensure t)
+(use-package s
+  :ensure t)
+(use-package ein
+  :ensure t)
+(use-package diminish
+  :ensure t)
+(use-package cl
+  :ensure t)
+(use-package bind-key
+  :ensure t)
+#+END_SRC
+** Swiper
+#+BEGIN_SRC emacs-lisp
+;; it looks like counsel is a requirement for swiper
+(use-package counsel
+  :ensure t
+  )
+(use-package swiper
+  :init (ivy-mode 1)
+  :ensure t
+  :bind (
+         ("C-s" . swiper)
+         ("C-r" . swiper)
+         ("M-x" . counsel-M-x)
+         ("C-x C-f" . counsel-find-file)
+         ("C-c C-r" . ivy-resume)
+         ("<f6>" . ivy-resume)
+         ("C-c h m" . woman)
+         ("C-x b" . ivy-switch-buffer)
+         ("C-c u" . swiper-all)
+         ("<f1> f" . counsel-describe-function)
+         ("<f1> v" . counsel-describe-variable)
+         ("<f1> l" . counsel-load-library)
+         ("<f2> i" . counsel-info-lookup-symbol)
+         ("<f2> u" . counsel-unicode-char)
+         ("C-c g" . counsel-git)
+         ("C-c j" . counsel-git-grep)
+         ("C-c k" . counsel-ag)
+         ("C-x l" . counsel-locate)
+         ("C-S-o" . counsel-rhythmbox)
+         )
+  :config
+  (setq ivy-use-virtual-buffers t
+        ivy-count-format "%d/%d ")
+  (setq projectile-completion-system 'ivy)                   ;; Habilitamos ivy en projectile
+  (setq magit-completing-read-function 'ivy-completing-read) ;; Habilitamos ivy en magit
+  ;; Tomado de scimax
+  (ivy-set-actions
+   t
+   '(("i" (lambda (x) (with-ivy-window
+                        (insert x))) "insert candidate")
+     (" " (lambda (x) (ivy-resume)) "resume")
+     ("?" (lambda (x)
+            (interactive)
+            (describe-keymap ivy-minibuffer-map)) "Describe keys")))
+  ;; ** Acciones para counsel-find-file
+  ;; Tomado de scimax
+  (ivy-add-actions
+   'counsel-find-file
+   '(("a" (lambda (x)
+            (unless (memq major-mode '(mu4e-compose-mode message-mode))
+              (compose-mail))
+            (mml-attach-file x)) "Attach to email")
+     ("c" (lambda (x) (kill-new (f-relative x))) "Copy relative path")
+     ("4" (lambda (x) (find-file-other-window x)) "Open in new window")
+     ("5" (lambda (x) (find-file-other-frame x)) "Open in new frame")
+     ("C" (lambda (x) (kill-new x)) "Copy absolute path")
+     ("d" (lambda (x) (dired x)) "Open in dired")
+     ("D" (lambda (x) (delete-file x)) "Delete file")
+     ("e" (lambda (x) (shell-command (format "open %s" x)))
+      "Open in external program")
+     ("f" (lambda (x)
+            "Open X in another frame."
+            (find-file-other-frame x))
+      "Open in new frame")
+     ("p" (lambda (path)
+            (with-ivy-window
+              (insert (f-relative path))))
+      "Insert relative path")
+     ("P" (lambda (path)
+            (with-ivy-window
+              (insert path)))
+      "Insert absolute path")
+     ("l" (lambda (path)
+            "Insert org-link with relative path"
+            (with-ivy-window
+              (insert (format "[[./%s]]" (f-relative path)))))
+      "Insert org-link (rel. path)")
+     ("L" (lambda (path)
+            "Insert org-link with absolute path"
+            (with-ivy-window
+              (insert (format "[[%s]]" path))))
+      "Insert org-link (abs. path)")
+     ("r" (lambda (path)
+            (rename-file path (read-string "New name: ")))
+      "Rename")))
+  )
+
+#+END_SRC
+** Support packages 
+#+BEGIN_SRC emacs-lisp
+(use-package flycheck
+  :ensure t
+  :config
+  (global-flycheck-mode))
+(use-package auto-complete
+  :ensure t
+  :config
+  (ac-config-default))
+(use-package auto-compile
+  :config (auto-compile-on-load-mode))
+(setq load-prefer-newer t)
+#+END_SRC
+
+** Multiple Cursors
+#+BEGIN_SRC emacs-lisp
+(dolist (key '("\C-d" "\C-\M-b"))
+  (global-unset-key key))
+;; Multiple lines editing 
+(use-package multiple-cursors
+  :diminish multiple-cursors-mode
+  :defer t
+  :init
+  (global-set-key (kbd "C-d") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-M-d") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+  )
+#+END_SRC 
+* For Languages
+** R 
+#+BEGIN_SRC emacs-lisp
+(use-package ess
+  :ensure t
+  :bind
+  (:map ess-mode-map
+        (";" . ess-insert-assign))
+  (:map inferior-ess-mode-map
+        (";" . ess-insert-assign))
+  :init
+  (load "ess-site"))
+
+(use-package polymode
+  :ensure t
+  :defer t)
+
+(use-package poly-markdown
+  :ensure t
+  )
+
+(use-package poly-markdown
+  :ensure polymode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
+  )
+
+(use-package poly-markdown
+  :ensure polymode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
+  (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+  (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
+  )
+
+(defun then_R_operator ()
+  "R - %>% operator or 'then' pipe operator"
+  (interactive)
+  (just-one-space 1)
+  (insert "%>%")
+  (reindent-then-newline-and-indent))
+(define-key ess-mode-map (kbd "C-%") 'then_R_operator)
+(define-key inferior-ess-mode-map (kbd "C-%") 'then_R_operator)
+#+END_SRC
+** Python 
+#+BEGIN_SRC emacs-lisp
+  (use-package elpy
+  :ensure t
+  :init (setenv "WORKON_HOME" "~/src/miniconda3/envs")
+  :defer t
+  :config
+  (elpy-enable)
+  (pyvenv-activate "~/src/miniconda3")
+  (setq
+  python-shell-interpreter "python3"
+  python-shell-interpreter-args "-i"
+  elpy-rpc-python-command "python3"
+  elpy-shell-starting-directory 'current-directory
+  )
+  (delete `elpy-module-django elpy-modules)
+  (delete `elpy-module-highlight-indentation elpy-modules))
+
+  (use-package py-autopep8
+  :ensure t
+  :init
+  (setq py-autopep8-options '("--max-line-length=150"))
+  :config
+  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+#+END_SRC
+
+#+RESULTS:
+
+** Docker
+#+BEGIN_SRC emacs-lisp
+(use-package docker :ensure t)
+(use-package docker-tramp :ensure t)
+(use-package dockerfile-mode :ensure t)
+#+END_SRC
+** SQL
+#+BEGIN_SRC emacs-lisp
+(use-package sql-indent
+  :ensure t)
+(eval-after-load "sql"
+  '(load-library "sql-indent"))
+#+END_SRC
+** Bash
+#+BEGIN_SRC emacs-lisp
+(load "~/.emacs.d/essh.el")
+(require 'essh)                                                    
+
+(defun essh-sh-hook ()                                             
+  (define-key sh-mode-map "\C-c\C-r" 'pipe-region-to-shell)        
+  (define-key sh-mode-map "\C-c\C-b" 'pipe-buffer-to-shell)        
+  (define-key sh-mode-map "\C-c\C-j" 'pipe-line-to-shell)          
+  (define-key sh-mode-map "\C-c\C-n" 'pipe-line-to-shell-and-step) 
+  (define-key sh-mode-map "\C-c\C-f" 'pipe-function-to-shell)      
+  (define-key sh-mode-map "\C-c\C-d" 'shell-cd-current-directory)) 
+(add-hook 'sh-mode-hook 'essh-sh-hook)                             
+
+(global-set-key [f1] 'shell)
+
+(setq explicit-shell-file-name "/bin/bash")
+(setq shell-file-name "bash")
+(setq explicit-bash-args '("--noediting" "--login" "-i"))
+(setenv "SHELL" shell-file-name)
+
+(add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
+#+END_SRC 
+* Writing 
+** Latex
+#+BEGIN_SRC emacs-lisp
+(use-package auctex
+  :defer t
+  :ensure t)
+#+END_SRC
+** Markdown
+#+BEGIN_SRC emacs-lisp 
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+#+END_SRC
+** Org
+#+BEGIN_SRC emacs-lisp 
+(use-package org
+  :mode ("\\.org\\'" . org-mode)
+  :config
+  (progn
+    ;; Org-babel
+    ;; No preguntar para confirmar la evaluación
+    (setq org-confirm-babel-evaluate nil)
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '(
+       (emacs-lisp . t)
+       (R . t)
+       (python . t)
+       (sql . t)
+       (shell . t)
+	))
+    ) ;; Fin de progn
+  )
+
+(use-package ox-reveal
+  :ensure t
+  :config (progn
+	(require 'ox-reveal)
+	(setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"))
+  )
+
+(use-package htmlize
+  :ensure t
+  :no-require t)
+#+END_SRC
+* Version Control
+** Magit
+#+BEGIN_SRC emacs-lisp
+(use-package magit
+  :ensure t
+  :bind
+  ( "\C-xg" . magit-status)
+  )
+(use-package magit-gitflow
+  :ensure t
+  :after magit
+  :disabled
+  :init
+  (progn
+    (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)  ;; Keybing: C-f en la ventana de magit
+    ))
+(use-package git-gutter+
+  :diminish
+  :defer t
+  :config
+  (global-git-gutter+-mode)
+  )
+#+END_SRC
+* For file types
+** Csv's
+#+BEGIN_SRC emacs-lisp
+(use-package csv-mode
+  :ensure t
+  :mode "\\.[PpTtCc][Ss][Vv]\\'"
+  :config
+  (progn
+    (setq csv-separators '("," ";" "|" " " "\t"))
+    )
+  )
+#+END_SRC
+** JSON
+#+BEGIN_SRC emacs-lisp
+(use-package json-mode
+  :ensure t)
+#+END_SRC
+* Mac OS
+** Keybindings
+#+BEGIN_SRC emacs-lisp
+(cond
+ ((string-equal system-type "darwin") ; Mac OS X
+  (progn
+    (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin:/usr/local/bin/:$HOME/.pyenv/shims"))
+  (global-set-key (kbd "M-3") '(lambda () (interactive) (insert "#")))
+  (global-set-key (kbd "M-ñ") '(lambda () (interactive) (insert "~")))
+  (global-set-key (kbd "M-º") '(lambda () (interactive) (insert "\\")))
+  (global-set-key (kbd "M-2") '(lambda () (interactive) (insert "@")))
+  (global-set-key (kbd "M-1") '(lambda () (interactive) (insert "|")))
+  (global-set-key (kbd "M-ç") '(lambda () (interactive) (insert "}")))
+  (global-set-key (kbd "M-+") '(lambda () (interactive) (insert "]")))
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8)
+  (message "Mac OS X")
+  ))
+ )
+;; window jump
+(cond
+ ((string-equal system-type "darwin") ; Mac OS X
+  (progn
+    (defvar my-keys-minor-mode-map
+      (let ((map (make-sparse-keymap)))
+	(define-key map (kbd "<C-s-up>") 'window-jump-up) 
+	(define-key map (kbd "<C-s-right>") 'window-jump-right)
+	(define-key map (kbd "<C-s-down>") 'window-jump-down)
+	(define-key map (kbd "<C-s-left>") 'window-jump-left)
+	map)
+      "my-keys-minor-mode keymap.")
+    )))
+
+#+END_SRC
+* Themes
+** Theme.
+#+BEGIN_SRC emacs-lisp
+(use-package material-theme
+  :ensure t
+  :init
+  (load-theme 'material t)
+  )
+(if (package-installed-p 'all-the-icons)
+  (setq font-install nil)
+  (setq font-install t)
+  )
+
+(use-package all-the-icons
+  :ensure t
+  :init
+  
+  :config
+  (use-package all-the-icons-dired
+    :ensure t
+    :config
+    (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+    )
+  )
+
+(if font-install
+    (all-the-icons-install-fonts t)
+  nil
+  )
+(setq default-frame-alist '((font . "Source Code Pro-11")))
+(defun my/dashboard-banner ()
+  """Set a dashboard banner including information on package initialization
+   time and garbage collections."""
+  (setq dashboard-banner-logo-title
+        (format "Emacs ready in %.2f seconds with %d garbage collections."
+                (float-time (time-subtract after-init-time before-init-time)) gcs-done)))
+
+(use-package dashboard
+  :init
+  (add-hook 'after-init-hook 'dashboard-refresh-buffer)
+  (add-hook 'dashboard-mode-hook 'my/dashboard-banner)
+  :config
+  (setq dashboard-startup-banner 'logo)
+  (dashboard-setup-startup-hook))
+#+END_SRC
+** Window Jump
+#+BEGIN_SRC emacs-lisp
+(use-package window-jump
+  :ensure t)
+(defvar my-keys-minor-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "<M-up>") 'window-jump-up) 
+    (define-key map (kbd "<M-right>") 'window-jump-right)
+    (define-key map (kbd "<M-down>") 'window-jump-down)
+    (define-key map (kbd "<M-left>") 'window-jump-left)
+    map)
+  "my-keys-minor-mode keymap.")
+(define-minor-mode my-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  :init-value t
+  :lighter " my-keys")
+(my-keys-minor-mode 1)
+(defun my-minibuffer-setup-hook ()
+  (my-keys-minor-mode 0))
+(add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
+
+#+END_SRC
+
+#+RESULTS:
+| my-minibuffer-setup-hook | rfn-eshadow-setup-minibuffer | minibuffer-history-isearch-setup | minibuffer-history-initialize |
+
