@@ -225,27 +225,13 @@ Basics for emacs.
   :init
   (load "ess-site"))
 
-(use-package polymode
-  :ensure t
-  :defer t)
 
 (use-package poly-markdown
   :ensure t
-  )
-
-(use-package poly-markdown
-  :ensure polymode
   :init
   (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
-  )
-
-(use-package poly-markdown
-  :ensure polymode
-  :init
-  (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
-  (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
-  (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
-  )
+  (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown-mode))
+ )
 
 (defun then_R_operator ()
   "R - %>% operator or 'then' pipe operator"
@@ -409,6 +395,11 @@ Basics for emacs.
 (use-package json-mode
   :ensure t)
 #+END_SRC
+** Yaml
+#+BEGIN_SRC emacs-lisp
+(use-package yaml-mode
+  :mode ("\\.yml$" . yaml-mode))
+#+END_SRC
 * Mac OS
 ** Keybindings
 #+BEGIN_SRC emacs-lisp
@@ -488,6 +479,16 @@ Basics for emacs.
   :config
   (setq dashboard-startup-banner 'logo)
   (dashboard-setup-startup-hook))
+#+END_SRC
+** NeoTree
+#+BEGIN_SRC emacs-lisp
+(use-package neotree
+:config
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+(global-set-key [f9] 'neotree-toggle)
+)
+
+
 #+END_SRC
 ** Window Jump
 #+BEGIN_SRC emacs-lisp
