@@ -64,11 +64,17 @@ Basics for emacs.
   :ensure t)
 (use-package diminish
   :ensure t)
-(use-package cl
+(use-package cl-lib
   :ensure t)
 (use-package bind-key
   :ensure t)
 #+END_SRC
+
+Change the backup location. 
+#+BEGIN_SRC emacs-lisp
+(setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
+#+END_SRC
+
 ** Swiper
 #+BEGIN_SRC emacs-lisp
 ;; it looks like counsel is a requirement for swiper
