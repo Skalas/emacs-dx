@@ -51,6 +51,8 @@
 (defun my-minibuffer-setup-hook ()
   (my-keys-minor-mode 0))
 (add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
+;; linenumbers!
+(global-linum-mode 1)
 
 #+END_SRC 
 ** miscelaneous
@@ -303,6 +305,8 @@ Change the backup location.
   (setq py-autopep8-options '("--max-line-length=150"))
   :config
   (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+  (use-package poetry
+  :ensure t)
 #+END_SRC
 
 ** Docker
@@ -317,8 +321,14 @@ Change the backup location.
   :ensure t)
 (eval-after-load "sql"
   '(load-library "sql-indent"))
+(use-package jinja2-mode
+  :ensure t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.j2" . jinja2-mode))
+)
 #+END_SRC
 ** Bash
+
 #+BEGIN_SRC emacs-lisp
 (load "~/.emacs.d/essh.el")
 (require 'essh)                                                    
@@ -334,13 +344,21 @@ Change the backup location.
 
 (global-set-key [f1] 'shell)
 
-(setq explicit-shell-file-name "/bin/bash")
+(setq explicit-shell-file-name "/bin/zsh")
 (setq shell-file-name "bash")
 (setq explicit-bash-args '("--noediting" "--login" "-i"))
 (setenv "SHELL" shell-file-name)
 
 (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
 #+END_SRC 
+** Terraform
+#+begin_src emacs-lisp
+(use-package terraform-mode
+  :ensure t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.tf" . terraform-mode))
+)
+#+end_src
 * Writing 
 ** Latex
 #+BEGIN_SRC emacs-lisp
