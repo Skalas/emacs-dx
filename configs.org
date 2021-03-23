@@ -378,35 +378,48 @@ Change the backup location.
 #+END_SRC
 ** Org
 #+BEGIN_SRC emacs-lisp 
-(use-package org
-  :mode ("\\.org\\'" . org-mode)
-  :config
-  (progn
-    ;; Org-babel
-    ;; No preguntar para confirmar la evaluación
-    (setq org-confirm-babel-evaluate nil)
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '(
-       (emacs-lisp . t)
-       (R . t)
-       (python . t)
-       (sql . t)
-       (shell . t)
-	))
-    ) ;; Fin de progn
-  )
+  (use-package org
+    :mode ("\\.org\\'" . org-mode)
+    :config
+    (progn
+      ;; Org-babel
+      ;; No preguntar para confirmar la evaluación
+      (setq org-confirm-babel-evaluate nil)
+      (org-babel-do-load-languages
+       'org-babel-load-languages
+       '(
+	 (emacs-lisp . t)
+	 (R . t)
+	 (python . t)
+	 (sql . t)
+	 (shell . t)
+	  ))
+      ) ;; Fin de progn
+    )
+  (use-package ox-reveal
+    :ensure t
+    :custom
+    (org-reveal-note-key-char nil)
+    (org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"))
+  (use-package htmlize)
 
-(use-package ox-reveal
-  :ensure t
-  :config (progn
-	(require 'ox-reveal)
-	(setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"))
-  )
-
-(use-package htmlize
-  :ensure t
-  :no-require t)
+  ;; (use-package ox-reveal
+  ;;   :ensure t
+  ;;   :config (progn
+  ;; 	(require 'ox-reveal)
+  ;; 	(setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"))
+  ;;   )
+  (add-hook 'org-mode-hook 'visual-line-mode)
+   (add-hook 'org-mode-hook 'variable-pitch-mode)
+  (global-linum-mode 1)
+  (use-package htmlize
+    :ensure t
+    :no-require t)
+   
+   (use-package org-bullets
+      :config
+      (add-hook 'org-mode-hook (lambda () (linum-mode 0)))
+      (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+END_SRC
 * Version Control
 ** Magit
